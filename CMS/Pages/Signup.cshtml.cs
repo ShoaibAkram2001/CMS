@@ -73,7 +73,9 @@ namespace CMS.Pages
                             return RedirectToPage("/index");
                         }
 
-                        return RedirectToPage("/SignUp");
+                        ErrorMessage = "Not Successully Sign Up";
+                        //return RedirectToPage("/Error");
+                        return Page();
 
                     }
                 }

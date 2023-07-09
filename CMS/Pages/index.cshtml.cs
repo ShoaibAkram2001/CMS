@@ -75,6 +75,7 @@ public class IndexModel : PageModel
                     {
                         Console.WriteLine("Login Error");
                         ErrorMessage = "Invalid username or password.";
+                        //return RedirectToPage("/Error");
                         return Page();
                     }
                 }
