@@ -1,0 +1,18 @@
+﻿@page
+@model CMS.Pages.DashboardModel
+
+
+<h2>Dashboard</h2>
+
+<div class="dashboard-buttons">
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("Create")'">Create Contact</button><br />
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("/View")'">View All Contacts</button><br />
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("/Search")'">Search Contact</button><br />
+	<button class="btn btn-primary" onclick="location.href='@Url.Page("/Delete")'">Delete Contact</button><br />
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("/Sort")'">Sort Contacts</button><br />
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("/Categorize")'">Categorize Contacts</button><br />
+	<button class="btn btn-primary" onclick="location.href='@Url.Page("/Edit")'">Edit the Contact</button><br />
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("/Relationship")'">Contact Relationships</button><br />
+    <button class="btn btn-primary" onclick="location.href='@Url.Page("/Logout")'">Detect Duplicate Contact</button><br />
+    <!-- Add more buttons for other pages -->
+</div>

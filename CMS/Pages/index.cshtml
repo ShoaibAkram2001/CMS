@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+
+<h2>User Login</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p>@Model.ErrorMessage</p>
+}
+
+<form method="post" >
+    <input type="text" name="username" placeholder="Username" autocomplete="on" /><br />
+    <input type="password" name="password" placeholder="Password" autocomplete="on" /><br />
+    <input type="submit" value="Login" />
+</form>
+<p>Don't have an account? <a href="/Signup">Sign up</a></p>
