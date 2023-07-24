@@ -1,0 +1,46 @@
+﻿@page
+@model CMS.Pages.SortModel
+
+<h1>Sort Contacts</h1>
+
+<form method="get">
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="@Model.FirstName" />
+    </div>
+    <div>
+        <label for="sortOrder">Sort Order:</label>
+        <select id="sortOrder" name="sortOrder">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+        <button type="submit">Sort</button>
+    </div>
+</form>
+
+@if (Model.Contacts != null)
+{
+    <h2>Sorted Contacts</h2>
+
+    <table style="border: 1px solid #ddd; border-collapse: collapse;">
+        <thead>
+            <tr style="border: 1px solid #ddd; background-color: #f2f2f2;">
+                <th style="border: 1px solid #ddd; padding: 8px;">First Name</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Last Name</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Email</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.Contacts)
+            {
+                <tr style="border: 1px solid #ddd;">
+                    <td style="border: 1px solid #ddd; padding: 8px;">@contact.FirstName</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">@contact.LastName</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">@contact.Email</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">@contact.Phone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

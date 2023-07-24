@@ -1,0 +1,34 @@
+﻿@page
+@model CMS.Pages.ViewModel;
+
+
+
+@{
+    ViewData["Title"] = "All Contacts";
+}
+
+<h1>All Contacts</h1>
+
+<table style="border-collapse: collapse; width: 30%; margin-left:20%; margin-top:10%;">
+    <thead>
+        <tr>
+            
+            <th style="border: 1px solid black; padding: 8px;">First Name</th>
+            <th style="border: 1px solid black; padding: 8px;">Last Name</th>
+            <th style="border: 1px solid black; padding: 8px;">Email</th>
+            <th style="border: 1px solid black; padding: 8px;">Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model.Contacts)
+        {
+            <tr>
+                
+                <td style="border: 1px solid black; padding: 8px;">@contact.FirstName</td>
+                <td style="border: 1px solid black; padding: 8px;">@contact.LastName</td>
+                <td style="border: 1px solid black; padding: 8px;">@contact.Email</td>
+                <td style="border: 1px solid black; padding: 8px;">@contact.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>

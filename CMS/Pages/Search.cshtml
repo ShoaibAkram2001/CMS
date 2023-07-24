@@ -1,0 +1,43 @@
+﻿@page
+@model CMS.Pages.SearchModel
+@using CMS.Pages;
+
+<h1>Contact Search</h1>
+
+<form method="get">
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="@Model.FirstName" />
+        <button type="submit">Search</button>
+    </div>
+</form>
+   <form method="get">
+<div>
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" value="@Model.Phone" />
+        <button type="submit">Search</button>
+    </div>
+	</form>
+@if (Model.Contact != null)
+{
+    <h2>Contact Details</h2>
+
+    <table style="border-collapse: collapse; width: 30%; margin-left:5%; margin-top:3%;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black; padding: 8px;">First Name</th>
+                <th style="border: 1px solid black; padding: 8px;">Last Name</th>
+                <th style="border: 1px solid black; padding: 8px;">Email</th>
+                <th style="border: 1px solid black; padding: 8px;">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border: 1px solid black; padding: 8px;">@Model.Contact.FirstName</td>
+                <td style="border: 1px solid black; padding: 8px;">@Model.Contact.LastName</td>
+                <td style="border: 1px solid black; padding: 8px;">@Model.Contact.Email</td>
+                <td style="border: 1px solid black; padding: 8px;">@Model.Contact.Phone</td>
+            </tr>
+        </tbody>
+    </table>
+}

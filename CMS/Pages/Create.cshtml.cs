@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace CMS.Pages
@@ -12,20 +13,22 @@ namespace CMS.Pages
         {
             _configuration = configuration;
         }
+        public Guid Id { get; set; }
 
         [BindProperty]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [BindProperty]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [BindProperty]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [BindProperty]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
-        public string ErrorMessage { get; set; }
+       
+        public string? ErrorMessage { get; set; }
 
         public void OnGet()
         {
@@ -45,10 +48,12 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO Contacts (FirstName, LastName, Email, Phone) VALUES (@FirstName, @LastName, @Email, @Phone)";
+                    string query = "INSERT INTO Contacts (Id,FirstName, LastName, Email, Phone)  VALUES (@ID,@FirstName, @LastName, @Email, @Phone)"; ;
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        Id = Guid.NewGuid(); // Generate a unique ID
+                        command.Parameters.AddWithValue("@ID", Id);
                         command.Parameters.AddWithValue("@FirstName", FirstName);
                         command.Parameters.AddWithValue("@LastName", LastName);
                         command.Parameters.AddWithValue("@Email", Email);
