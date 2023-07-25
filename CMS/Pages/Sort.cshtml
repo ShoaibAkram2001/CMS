@@ -29,7 +29,8 @@
                 <th style="border: 1px solid #ddd; padding: 8px;">Last Name</th>
                 <th style="border: 1px solid #ddd; padding: 8px;">Email</th>
                 <th style="border: 1px solid #ddd; padding: 8px;">Phone</th>
-            </tr>
+                <th style="border: 1px solid #ddd; padding: 8px;">Category</th>
+			</tr>
         </thead>
         <tbody>
             @foreach (var contact in Model.Contacts)
@@ -39,7 +40,9 @@
                     <td style="border: 1px solid #ddd; padding: 8px;">@contact.LastName</td>
                     <td style="border: 1px solid #ddd; padding: 8px;">@contact.Email</td>
                     <td style="border: 1px solid #ddd; padding: 8px;">@contact.Phone</td>
-                </tr>
+                 <td style="border: 1px solid #ddd; padding: 8px;">@contact.Category</td>
+                
+				</tr>
             }
         </tbody>
     </table>

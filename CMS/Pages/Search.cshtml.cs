@@ -64,7 +64,7 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT TOP 1 FirstName, LastName, Email, Phone FROM Contacts WHERE FirstName = @FirstName";
+                    string query = "SELECT TOP 1 FirstName, LastName, Email, Phone,Category FROM Contacts WHERE FirstName = @FirstName";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -80,6 +80,7 @@ namespace CMS.Pages
                                 FirstName = reader["FirstName"].ToString(),
                                 LastName = reader["LastName"].ToString(),
                                 Email = reader["Email"].ToString(),
+                                category = reader["Category"].ToString(),
                                 Phone = reader["Phone"].ToString()
                             };
                         }
@@ -105,7 +106,7 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT TOP 1 FirstName, LastName, Email, Phone FROM Contacts WHERE Phone = @PhoneNumber";
+                    string query = "SELECT TOP 1 FirstName, LastName, Email, Phone,Category FROM Contacts WHERE Phone = @PhoneNumber";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -121,6 +122,7 @@ namespace CMS.Pages
                                 FirstName = reader["FirstName"].ToString(),
                                 LastName = reader["LastName"].ToString(),
                                 Email = reader["Email"].ToString(),
+                             category  = reader["Category"].ToString(),
                                 Phone = reader["Phone"].ToString()
                             };
                         }

@@ -47,7 +47,7 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT FirstName, LastName, Email, Phone FROM Contacts ";
+                    string query = "SELECT FirstName, LastName, Email, Phone,Category FROM Contacts ";
 
                     // If FirstName is provided, add WHERE clause for filtering
                     if (!string.IsNullOrEmpty(firstName))
@@ -74,6 +74,7 @@ namespace CMS.Pages
                                 FirstName = reader["FirstName"].ToString(),
                                 LastName = reader["LastName"].ToString(),
                                 Email = reader["Email"].ToString(),
+                                Category = reader["Category"].ToString(),
                                 Phone = reader["Phone"].ToString()
                             };
 

@@ -50,6 +50,7 @@ namespace CMS.Pages
                                 FirstName = reader["FirstName"].ToString(),
                                 LastName = reader["LastName"].ToString(),
                                 Email = reader["Email"].ToString(),
+                                category = reader["Category"].ToString(),
                                 Phone = reader["Phone"].ToString()
                             };
 

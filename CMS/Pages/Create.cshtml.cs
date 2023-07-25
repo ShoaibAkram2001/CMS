@@ -26,8 +26,10 @@ namespace CMS.Pages
 
         [BindProperty]
         public string? Phone { get; set; }
+        [BindProperty]
+        public string? Category { get; set; }
 
-       
+
         public string? ErrorMessage { get; set; }
 
         public void OnGet()
@@ -53,7 +55,7 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO Contacts (Id,FirstName, LastName, Email, Phone)  VALUES (@ID,@FirstName, @LastName, @Email, @Phone)"; ;
+                    string query = "INSERT INTO Contacts (Id,FirstName, LastName, Email, Phone,Category)  VALUES (@ID,@FirstName, @LastName, @Email, @Phone,@category)"; ;
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -63,7 +65,7 @@ namespace CMS.Pages
                         command.Parameters.AddWithValue("@LastName", LastName);
                         command.Parameters.AddWithValue("@Email", Email);
                         command.Parameters.AddWithValue("@Phone", Phone);
-
+                        command.Parameters.AddWithValue("@category", Category);
                         connection.Open();
                     int row =  command.ExecuteNonQuery();
 

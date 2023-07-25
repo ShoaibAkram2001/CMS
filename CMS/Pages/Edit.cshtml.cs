@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 using System.Data.SqlClient;
-
+using CMS.Pages;
 namespace CMS.Pages
 {
     public class EditModel : PageModel
@@ -26,6 +26,8 @@ namespace CMS.Pages
 
         [BindProperty]
         public string? Phone { get; set; }
+        [BindProperty]
+        public string? Category { get; set; }
 
 
         public string? ErrorMessage { get; set; }
@@ -53,7 +55,7 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Contacts SET FirstName = @FirstName, LastName = @LastName, Email = @Email WHERE Phone = @PhoneNumber";
+                    string query = "UPDATE Contacts SET FirstName = @FirstName, LastName = @LastName, Email = @Email,Category = @category WHERE Phone = @PhoneNumber";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -61,7 +63,8 @@ namespace CMS.Pages
                         command.Parameters.AddWithValue("@FirstName", FirstName);
                         command.Parameters.AddWithValue("@LastName", LastName);
                         command.Parameters.AddWithValue("@Email", Email);
-                        command.Parameters.AddWithValue("@Phone", Phone);
+                        command.Parameters.AddWithValue("@PhoneNumber", Phone);
+                        command.Parameters.AddWithValue("@category", Category);
 
                         connection.Open();
                         int row = command.ExecuteNonQuery();

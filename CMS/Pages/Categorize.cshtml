@@ -1,1 +1,17 @@
-﻿
+﻿@page
+@model CMS.Pages.CategorizeModel
+
+<h1>Contact Categorization</h1>
+
+<form method="post">
+    <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" value="@Model.FirstName" />
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" value="@Model.Category" />
+    </div>
+    <button type="submit">Categorize</button>
+</form>
+
