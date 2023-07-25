@@ -24,10 +24,14 @@ namespace CMS.Pages.Admin
             _configuration = configuration;
         }
 
-        public IActionResult OnGet()
-        { 
-
-            return Page();
+        public void OnGet()
+        {
+            if (HttpContext.Session.GetString("UserType") != "admin")
+            {
+                // Redirect to login if not authenticated as an admin
+                Response.Redirect("/index");
+            }
+         
         }
 
         public IActionResult OnPost()

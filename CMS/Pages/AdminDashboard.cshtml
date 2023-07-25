@@ -2,14 +2,14 @@
 @model CMS.Pages.AdminDashboardModel
 
 
-<h2> Admin Dashboard</h2>
+<h2> Welcome to Admin Dashboard</h2>
 
 <div class="dashboard-buttons">
     <button class="btn btn-primary" onclick="location.href='@Url.Page("/CreateUser")'">Create User</button><br />
     <button class="btn btn-primary" onclick="location.href='@Url.Page("/EditUser")'">Edit User</button><br />
 	 <button class="btn btn-primary" onclick="location.href='@Url.Page("/DeleteUser")'">Delete User</button><br />
 	 	 <button class="btn btn-primary" onclick="location.href='@Url.Page("/ViewUser")'">View Users</button><br />
-
+		   <button class="btn btn-primary" onclick="location.href='@Url.Page("/LogOut")'">Log Out</button><br />
     
     <!-- Add more buttons for other pages -->
 </div>

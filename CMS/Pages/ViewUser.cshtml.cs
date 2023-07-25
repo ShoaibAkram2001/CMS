@@ -18,6 +18,11 @@ namespace CMS.Pages.Admin
 
         public void OnGet()
         {
+            if (HttpContext.Session.GetString("UserType") != "admin")
+            {
+                // Redirect to login if not authenticated as an admin
+                Response.Redirect("/index");
+            }
             try
             {
                 string connectionString = _configuration.GetConnectionString("DefaultConnection");

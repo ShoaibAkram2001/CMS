@@ -34,6 +34,13 @@ namespace CMS.Pages
 
         public void OnGet()
         {
+            if (HttpContext.Session.GetString("UserType") != "admin")
+            {
+                // Redirect to login if not authenticated as an admin
+                Response.Redirect("/index");
+            }
+
+
             // This is the default GET handler for the Signup page
 
         }

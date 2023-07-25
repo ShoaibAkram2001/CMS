@@ -18,7 +18,7 @@ namespace CMS.Pages.Admin
             _configuration = configuration;
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
             /*
             // Fetch user details from the database based on the username
@@ -33,8 +33,13 @@ namespace CMS.Pages.Admin
             Username = userRecord.Username;
             // Set other user properties
              */
-            return Page();
-           
+            if (HttpContext.Session.GetString("UserType") != "admin")
+            {
+                // Redirect to login if not authenticated as an admin
+                Response.Redirect("/index");
+            }
+        
+
         }
 
         public IActionResult OnPost()
