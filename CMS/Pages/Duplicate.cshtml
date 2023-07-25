@@ -1,0 +1,42 @@
+﻿@page
+@model CMS.Pages.DuplicateModel
+
+<h1>Duplicate Contacts</h1>
+
+<form method="post">
+    <div>
+        <label for="searchPhoneNumber">Search Phone Number:</label>
+        <input type="tel" id="searchPhoneNumber" name="searchPhoneNumber" />
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+
+@if (Model.DuplicateContacts.Any())
+{
+    <table border="1"> <!-- Add 'border' attribute to display table with a border -->
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.DuplicateContacts)
+            {
+                <tr>
+                    <td>@contact.FirstName</td>
+                    <td>@contact.LastName</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.Phone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No duplicate contacts found.</p>
+}

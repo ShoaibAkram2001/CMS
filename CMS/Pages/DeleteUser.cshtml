@@ -1,0 +1,12 @@
+﻿@page
+@model CMS.Pages.Admin.DeleteUserModel
+
+<h1>Delete User</h1>
+
+<form method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="@Model.Username" />
+    </div>
+    <button type="submit">Delete User</button>
+</form>

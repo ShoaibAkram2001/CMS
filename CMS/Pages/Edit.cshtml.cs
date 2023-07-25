@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 
 namespace CMS.Pages
 {
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly IConfiguration _configuration;
 
-        public CreateModel(IConfiguration configuration)
+        public EditModel(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -27,7 +27,7 @@ namespace CMS.Pages
         [BindProperty]
         public string? Phone { get; set; }
 
-       
+
         public string? ErrorMessage { get; set; }
 
         public void OnGet()
@@ -53,21 +53,20 @@ namespace CMS.Pages
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO Contacts (Id,FirstName, LastName, Email, Phone)  VALUES (@ID,@FirstName, @LastName, @Email, @Phone)"; ;
+                    string query = "UPDATE Contacts SET FirstName = @FirstName, LastName = @LastName, Email = @Email WHERE Phone = @PhoneNumber";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        Id = Guid.NewGuid(); // Generate a unique ID
-                        command.Parameters.AddWithValue("@ID", Id);
+                        
                         command.Parameters.AddWithValue("@FirstName", FirstName);
                         command.Parameters.AddWithValue("@LastName", LastName);
                         command.Parameters.AddWithValue("@Email", Email);
                         command.Parameters.AddWithValue("@Phone", Phone);
 
                         connection.Open();
-                    int row =  command.ExecuteNonQuery();
+                        int row = command.ExecuteNonQuery();
 
-                        if(row >0)
+                        if (row > 0)
                         {
                             return RedirectToPage("/Dashboard");
                         }

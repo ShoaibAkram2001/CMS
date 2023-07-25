@@ -28,6 +28,9 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+
+
+
         // This is the default GET handler for the Login page
     }
 
@@ -65,10 +68,17 @@ public class IndexModel : PageModel
                     if (count > 0)
                     {
 
-                        Console.WriteLine("Login Successfull");
+               
+                        HttpContext.Session.SetString("UserType", Username);
+                         return RedirectToPage("/Dashboard");
 
-                        return RedirectToPage("/Dashboard");
+                    }
 
+
+                   else if (Username == "admin" && Password == "admin123")
+                    {
+                        HttpContext.Session.SetString("UserType", Username);
+                        return RedirectToPage("/AdminDashboard");
                     }
 
                     else

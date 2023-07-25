@@ -7,6 +7,12 @@ namespace CMS.Pages
     {
         public void OnGet()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserType")))
+            {
+                // Redirect to login if not authenticated
+                Response.Redirect("/index");
+            }
+
         }
     }
 }

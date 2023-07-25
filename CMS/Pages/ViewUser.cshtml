@@ -1,0 +1,24 @@
+﻿@page
+@model CMS.Pages.Admin.ViewUserModel
+
+<h1>All Users</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Password</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

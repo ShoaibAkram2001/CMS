@@ -28,6 +28,11 @@ namespace CMS.Pages
 
         public IActionResult OnGet()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("UserType")))
+            {
+                // Redirect to login if not authenticated
+                Response.Redirect("/index");
+            }
             Contacts = GetAllContacts(FirstName, SortOrder);
             return Page();
         }
